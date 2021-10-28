@@ -1,11 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
-import actions from './actions';
+import actions from "./actions";
+import IconButton from "@mui/material/IconButton";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import selectors from "./selectors";
+import './styles.scss';
 
 function ThemeToggler(props: any) {
-    const {toggleTheme} = props; 
-    console.log(actions);
-  return <button onClick={toggleTheme}>Change theme</button>;
+  const { toggleTheme, mode } = props;
+  console.log(actions);
+  return (
+    <div className="control__theme-toggler">
+    <IconButton onClick={toggleTheme} aria-label="delete">
+      {mode ? <Brightness4Icon /> : <Brightness7Icon />}
+    </IconButton>
+    </div>
+  );
 }
 
-export default connect(null, {...actions})(ThemeToggler);
+const mapStateToProps = (state: object) => ({
+  mode: selectors.isDarkMode(state),
+});
+
+export default connect(mapStateToProps, { ...actions })(ThemeToggler);

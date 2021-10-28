@@ -1,0 +1,20 @@
+.control {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.control__search-input {
+    flex-grow: 1;
+}
+
+.control__buttons-wrapper {
+    flex-grow: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .control {
+        flex-direction: row;
+    }
+}
