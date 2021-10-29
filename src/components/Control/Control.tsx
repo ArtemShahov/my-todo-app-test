@@ -28,6 +28,7 @@ function Control() {
       </div>
       <div className="control__buttons-wrapper">
         <ButtonGroup
+          disableElevation
           variant="contained"
           aria-label="outlined primary button group"
         >

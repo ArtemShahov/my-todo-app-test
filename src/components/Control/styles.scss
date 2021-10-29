@@ -2,19 +2,24 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 16px;
 }
 
 .control__search-input {
     flex-grow: 1;
+    width: 100%;
 }
 
 .control__buttons-wrapper {
-    flex-grow: 0;
+    // flex-grow: 0;
 }
 
 @media screen and (min-width: 768px) {
     .control {
         flex-direction: row;
+    }
+    .control__search-input {
+        width: auto;
     }
 }
