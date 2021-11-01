@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { BrowserRouter } from 'react-router-dom';
 import selectors from "./components/ThemeToggler/selectors";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -19,19 +20,21 @@ function App(props: any) {
     [mode]
   );
   return (
-    <ThemeProvider theme={theme}>
-      <Box
-        sx={{
-          bgcolor: "background.default",
-          color: 'text.primary',
-          width: "100vw",
-          minHeight: "100vh",
-        }}
-      >
-        <Header />
-        <Main />
-      </Box>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Box
+          sx={{
+            bgcolor: "background.default",
+            color: 'text.primary',
+            width: "100vw",
+            minHeight: "100vh",
+          }}
+        >
+          <Header />
+          <Main />
+        </Box>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
