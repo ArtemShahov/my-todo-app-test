@@ -1,23 +1,20 @@
-import { SET_CATEGORIES } from "./actionTypes";
-import { Action_I } from "./actionInterface";
 import dataService from "../../dataService";
-
-const setCategories = (data: object): Action_I => ({
-  type: SET_CATEGORIES,
-  payload: data,
-});
+import actionCreators from './actionCreators';
 
 const loadCategories = () => (dispatch: any) => {
   dataService.getCategories()
     .then(data => {
       console.log(data)
-      dispatch(setCategories(data))
+      dispatch(actionCreators.setCategories(data))
     })
 };
 
-
-const actions = {
-  loadCategories,
+const removeCategory = (category: object) => (dispatch: any) => {
+  dataService.removeCategory(category)
+    .then(data => dispatch(actionCreators.removeCategory(data)))
 }
 
-export default actions;
+export default {
+  loadCategories,
+  removeCategory,
+}

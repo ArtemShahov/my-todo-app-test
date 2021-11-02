@@ -1,5 +1,5 @@
 import { Action_I } from "./actionInterface";
-import { SET_CATEGORIES } from "./actionTypes";
+import { REMOVE_CATEGORY, SET_CATEGORIES } from "./actionTypes";
 
 const initialState = {
   categories: {
@@ -15,6 +15,11 @@ export const categoriesReducer = (state = initialState, action: Action_I) => {
         ...state,
         categories: { ...action.payload },
       };
+    }
+    case REMOVE_CATEGORY: {
+      return {
+        ...state,
+      }
     }
     default:
       return state;

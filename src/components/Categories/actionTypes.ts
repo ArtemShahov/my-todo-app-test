@@ -1,1 +1,3 @@
 export const SET_CATEGORIES = 'LOAD_CATEGORIES';
+export const REMOVE_CATEGORY = 'REMOVE_CATEGORY';
+

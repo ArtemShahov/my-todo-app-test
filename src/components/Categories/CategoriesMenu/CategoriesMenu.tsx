@@ -4,42 +4,22 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import actions from '../actions';
 import selectors from '../selectors';
 
-const testData = [
-  {
-    name: 'cat1',
-  },
-  {
-    name: 'cat2',
-  },
-  {
-    name: 'cat3',
-    subCat: [
-      {
-        name: 'cat4',
-      },
-      {
-        name: 'cat5',
-        subCat: [
-          {
-            name: 'cat6',
-          }
-        ]
-      }
-    ],
-  },
-];
-
 interface Category {
   name: string,
   subCat?: object[],
 }
 
-function addCategoryHandler(item: any) {
-  console.log(item);
-}
+
 
 function CategoriesMenu(props: any) {
-  const { loadCategories, categoriesTree, allCategories } = props;
+  const { loadCategories, categoriesTree, allCategories, removeCategory } = props;
+  function addCategoryHandler(item: any) {
+    console.log('add', item);
+  }
+  
+  function removeCategoryHandler(item: any) {
+    removeCategory(item);
+  }
 
   function renderCategoriesLink(category: any) {
     const path: string = '/categories';
@@ -54,7 +34,7 @@ function CategoriesMenu(props: any) {
         <button onClick={() => addCategoryHandler(allCategories[categoryIndex])} type="button">
           Add category
         </button>
-        <button type="button">
+        <button onClick={() => removeCategoryHandler(allCategories[categoryIndex])} type="button">
           Remove category
         </button>
       </div>

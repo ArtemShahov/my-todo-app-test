@@ -58,8 +58,12 @@ app.use(express.urlencoded({
 }));
 app.use(express.static('build'));
 
-app.get('/getCatgories', (req, res) => {
+app.get('/getCategories', (req, res) => {
     res.json(categories);
+})
+
+app.post('/removeCategory', (req, res) => {
+    console.log(req.body);
 })
 
 app.get('*', (req, res) => {
