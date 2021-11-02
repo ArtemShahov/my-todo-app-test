@@ -5,51 +5,26 @@ const cors = require('cors');
 const path = require('path');
 const port = process.env.PORT || 5050;
 
-const categories = {
-    allCategories: [{
-            name: 'cat1',
-        },
-        {
-            name: 'cat2',
-        },
-        {
-            name: 'cat3',
-        },
-        {
-            name: 'cat4',
-            path: 'cat3',
-        },
-        {
-            name: 'cat5',
-            path: 'cat3',
-        },
-        {
-            name: 'cat6',
-            path: 'cat3/cat5',
-        }
-    ],
-    categoriesTree: [{
-            name: 'cat1',
-        },
-        {
-            name: 'cat2',
-        },
-        {
-            name: 'cat3',
-            subCat: [{
-                    name: 'cat4',
+const categories = [{
+        name: 'cat1',
+    },
+    {
+        name: 'cat2',
+    },
+    {
+        name: 'cat3',
+    },
+    {
+        name: 'cat4',
+    },
+    {
+        name: 'cat5',
+    },
+    {
+        name: 'cat6',
+    }
+];
 
-                },
-                {
-                    name: 'cat5',
-                    subCat: [{
-                        name: 'cat6',
-                    }]
-                }
-            ],
-        },
-    ],
-}
 
 app.use(cors());
 app.use(express.json());
@@ -63,7 +38,12 @@ app.get('/getCategories', (req, res) => {
 })
 
 app.post('/removeCategory', (req, res) => {
-    console.log(req.body);
+    const removedCategory = req.body;
+    const categoryIndex = categories.findIndex(item => item.name === removedCategory.name);
+    if (categoryIndex !== -1) {
+        categories.splice(categoryIndex, 1);
+    }
+    res.json(categories);
 })
 
 app.get('*', (req, res) => {

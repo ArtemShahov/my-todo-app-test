@@ -1,8 +1,6 @@
-const getAllCategories = (store: any) => store.categoriesReducer.categories.allCategories;
-const getCategoriesTree = (store: any) => store.categoriesReducer.categories.categoriesTree;
+const getCategories = (store: any) => store.categoriesReducer.categories;
 const selectors = {
-    getAllCategories,
-    getCategoriesTree,
+    getCategories,
 };
 
 export default selectors;

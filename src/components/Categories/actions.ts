@@ -11,7 +11,7 @@ const loadCategories = () => (dispatch: any) => {
 
 const removeCategory = (category: object) => (dispatch: any) => {
   dataService.removeCategory(category)
-    .then(data => dispatch(actionCreators.removeCategory(data)))
+    .then(data => dispatch(actionCreators.setCategories(data)))
 }
 
 export default {
