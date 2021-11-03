@@ -9,7 +9,6 @@ import './styles.scss';
 
 function ThemeToggler(props: any) {
   const { toggleTheme, mode } = props;
-  console.log(actions);
   return (
     <div className="control__theme-toggler">
     <IconButton onClick={toggleTheme} aria-label="delete">

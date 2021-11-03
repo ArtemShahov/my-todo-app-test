@@ -1,7 +1,9 @@
 import React from 'react';
-import { useRouteMatch, Route, useParams, Switch  } from 'react-router';
+import { useParams  } from 'react-router';
+import actions from '../actions';
+import { connect } from 'react-redux';
 
-function CategoryContent() {
+function CategoryContent(props: any) {
     const { category } = useParams<{ category: string }>();
     return (
         <div>
@@ -10,4 +12,4 @@ function CategoryContent() {
     )
 }
 
-export default CategoryContent;
+export default connect(null, { ...actions})(CategoryContent);

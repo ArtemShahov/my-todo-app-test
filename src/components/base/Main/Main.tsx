@@ -3,7 +3,7 @@ import './styles.scss'
 import Control from "../../Control";
 import CategoriesMenu from '../../Categories/CategoriesMenu';
 import CategoryContent from "../../Categories/CategoryContent";
-import { useRouteMatch, Route, Switch  } from 'react-router';
+import { Route, Switch  } from 'react-router';
 
 function Main() {
     return (

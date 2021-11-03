@@ -7,12 +7,15 @@ const port = process.env.PORT || 5050;
 
 const categories = [{
         name: 'cat1',
+        items: ['item1', 'item2'],
     },
     {
         name: 'cat2',
+        items: ['item3', 'item2'],
     },
     {
         name: 'cat3',
+        items: [],
     },
     {
         name: 'cat4',
@@ -25,6 +28,20 @@ const categories = [{
     }
 ];
 
+const categoriesItems = [
+    {
+        name: 'item1',
+        content: 'To do 1',
+    },
+    {
+        name: 'item2',
+        content: 'To do 2',
+    },
+    {
+        name: 'item3',
+        content: 'To do 3',
+    },
+];
 
 app.use(cors());
 app.use(express.json());
@@ -37,6 +54,10 @@ app.get('/getCategories', (req, res) => {
     res.json(categories);
 })
 
+app.get('/getCategoriesItems', (req, res) => {
+    res.json(categoriesItems);
+});
+
 app.post('/removeCategory', (req, res) => {
     const removedCategory = req.body;
     const categoryIndex = categories.findIndex(item => item.name === removedCategory.name);
@@ -45,6 +66,7 @@ app.post('/removeCategory', (req, res) => {
     }
     res.json(categories);
 })
+
 
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import actions from '../actions';
 import selectors from '../selectors';
 
@@ -10,7 +10,7 @@ interface Category {
 
 function CategoriesMenu(props: any) {
 
-  const { loadCategories, categories, removeCategory } = props;
+  const { loadCategories, categories, removeCategory, setCategoriesItems } = props;
 
   function addCategoryHandler(item: Category) {
     console.log('add', item);
@@ -23,6 +23,7 @@ function CategoriesMenu(props: any) {
 
   React.useEffect(() => {
     loadCategories();
+    setCategoriesItems();
   }, [])
   return (
     <ul>
